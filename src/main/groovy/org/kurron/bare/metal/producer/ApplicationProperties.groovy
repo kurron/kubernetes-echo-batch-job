@@ -5,10 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 /**
  * Holds application properties.
  */
-@ConfigurationProperties( value = 'producer', ignoreUnknownFields = false )
+@ConfigurationProperties( value = 'echo', ignoreUnknownFields = false )
 class ApplicationProperties {
 
-    String exchange
-    String queue
-    String routingKey
 }
