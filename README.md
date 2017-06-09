@@ -1,6 +1,6 @@
 # Overview
-This project is a simple Docker image that provides a component that can be used to benchmark RabbitMQ deployments.
-This application will publish messages to a a queue.
+This project is a simple Docker image and Kubernetes job descriptor that can be used
+to prove out that K8s batch job support is working.
 
 # Prerequisites
 * a working [Docker](http://docker.io) engine
@@ -25,13 +25,12 @@ application's behavior.  Examine the script to see the current list of arguments
 
 1. `kubernetes/create-namespace.sh` to create a namespace, if you aren't using one already
 1. `kubernetes/set-namespace-as-default.sh` to create the namespace, if you aren't using one already
-1. `kubernetes/create-config-map.sh` to install the configuration values into K8s.  You can either edit the script or
 pass in the required information as arguments.
 1. `kubernetes/install-batch-job.sh` to create and run the job
 1. run `kubectl get jobs --show-all` to check on its status
 1. run `kubectl get pods --show-all` to see the completed pod
-1. run `kubectl logs amqp-bare-metal-producer` to see its output
-1. run `kubectl delete jobs/amqp-bare-metal-producer` to clean up
+1. run `kubectl logs <pod name>` to see its output
+1. run `kubectl delete jobs/date-echo` to clean up
 
 # Troubleshooting
 
