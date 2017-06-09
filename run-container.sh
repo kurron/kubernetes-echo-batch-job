@@ -10,19 +10,12 @@ THREAD_COUNT=${7:-32}
 
 CMD="docker run \
             --cpus 1 \
-            --env consumer_modvalue=1000 \
-            --env spring_rabbitmq_host=${HOST} \
-            --env spring_rabbitmq_virtual-host=${VHOST} \
-            --env spring_rabbitmq_username=${USERNAME} \
-            --env spring_rabbitmq_password=${PASSWORD} \
             --interactive  \
-            --name amqp-producer \
+            --name echo \
             --network host \
             --rm \
-            kurron/amqp-bare-metal-producer:latest \
-            --number-of-messages=${MESSAGE_COUNT} \
-            --payload-size=${PAYLOAD_SIZE} \
-            --thread-count=${THREAD_COUNT}"
+            kurron/date-echo:latest \
+            --number-of-messages=${MESSAGE_COUNT}"
 
 echo ${CMD}
 ${CMD}
